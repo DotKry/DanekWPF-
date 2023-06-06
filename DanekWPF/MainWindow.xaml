@@ -1,0 +1,51 @@
+﻿<Window x:Class="DanekWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DanekWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="548" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="8*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*" />
+            <RowDefinition Height="70*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="19*" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="QuestChoose" ToolTipService.ShowDuration="15000" Content="Список заданий" FontSize="24px" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ListBox HorizontalContentAlignment="Stretch" x:Name="TasksList" Grid.Row="1">
+        </ListBox>
+
+        <Label x:Name="MethodChoose" ToolTipService.ShowDuration="15000" Content="Выберите метод:" FontSize="24px" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Column="1" />
+        <ComboBox Grid.Column="1" x:Name="MethodCombo" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="210,0,0,0" Width="585" SelectionChanged="ComboBox_SelectionChanged">
+            <Label Content="Метод Якоби для решения СЛАУ"/>
+            <Label Content="Метод Ньютона-Рафсона для решения НУ"/>
+            <Label Content="Метод Гаусса-Зейделя для решения СЛАУ"/>
+            <Label Content="Метод Релаксации переменных для решения СЛАУ"/>
+            <Label Content="Метод Простой итерации для решения НУ"/>
+        </ComboBox>
+
+        <TextBox Grid.Column="1" x:Name="MatrixAInput" Text ="1, 3, 4; 2, 7, -1; -1, 5, 0" FontSize="24px" Margin="10,57,466,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Height="60" />
+        <TextBox Grid.Column="1" x:Name="VectorBInput" Text ="14, 5, 1" FontSize="24px" Margin="11,169,466,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Height="34"/>
+        <Label Grid.Column="1" x:Name="Input1" ToolTipService.ShowDuration="15000" Content="Введите матрицу A" FontSize="24px" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Row="1" Height="42"/>
+        <Label Grid.Column="1" x:Name="Input2" ToolTipService.ShowDuration="15000" Content="Введите вектор B" FontSize="24px" HorizontalAlignment="Left" Margin="5,122,0,0" VerticalAlignment="Top" Grid.Row="1" Height="42" Width="324"/>
+        <TextBox Grid.Column="1" x:Name="EpsInput" Text ="1e-6" FontSize="24px" Margin="350,57,162,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"  Height="34" />
+        <TextBox Grid.Column="1" x:Name="OmegaInput" Text ="0.7" FontSize="24px" Margin="19,229,627,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"  Height="34" Visibility="Hidden" />
+        <TextBox Grid.Column="1" x:Name="X_0Input" Text ="0, 0, 0" FontSize="24px" Margin="350,143,162,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Height="34"/>
+        <Label Grid.Column="1" x:Name="Input3" ToolTipService.ShowDuration="15000" Content="Введите точность" FontSize="24px" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Grid.Row="1" Width="204" Height="42"/>
+        <Label Grid.Column="1" x:Name="Input6" ToolTipService.ShowDuration="15000" Content="Введите параметр omega" FontSize="24px" HorizontalAlignment="Left" Margin="15,190,0,0" VerticalAlignment="Top" Grid.Row="1" Width="319" Height="42" Visibility="Hidden"/>
+        <Label Grid.Column="1" x:Name="Input4" ToolTipService.ShowDuration="15000" Content="Введите начальное приближение" FontSize="24px" HorizontalAlignment="Left" Margin="350,96,0,0" VerticalAlignment="Top" Grid.Row="1" Height="42" Width="382"/>
+        <TextBox Grid.Column="1" x:Name="MaxIterInput" Text ="1000" FontSize="24px" Margin="350,229,162,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Height="34" />
+        <Label Grid.Column="1" x:Name="Input5" ToolTipService.ShowDuration="15000" Content="Введите макс. кол-во итераций" FontSize="24px" HorizontalAlignment="Left" Margin="350,182,0,0" VerticalAlignment="Top" Grid.Row="1" Height="42" Width="512"/>
+
+        <Label x:Name="LableResult" ToolTipService.ShowDuration="15000" Grid.Column="1" Content="Решение:" FontSize="24px" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Grid.Row="2" Height="42" Width="113"/>
+        <Label Grid.Column="1" x:Name="Result" FontSize="24px" HorizontalAlignment="Left" Margin="15,48,0,0" VerticalAlignment="Top" Grid.Row="2" Height="42" Width="879"/>
+        <Button Grid.Column="1" x:Name="SolveButton" Content="Решить" FontSize="24px" Click="DanekButton_Click" Grid.Row="3" Margin="0,0,0,0" />
+    </Grid>
+</Window>
